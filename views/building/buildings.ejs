@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+    <% if (!buildings.length) { %>
+        <h1>현재 분양중인 건물이 없습니다</h1>
+    <% } else { %>
+        <% buildings.forEach(building => { %>
+            <div>
+                <a href="/building/<%= building._id %>">
+                    <img src="<%= building.imageUrl %>" alt="<%= building.name %>">
+                    <h4><%= building.name %></h4>
+                </a>
+            </div>
+        <% }) %>
+    <% } %>
+    
+<%- include('../includes/end.ejs') %>

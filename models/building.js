@@ -7,10 +7,6 @@ const buildingSchema = new Schema({
         type: String,
         required: true
     },
-    price: {
-        type: String,
-        required: true
-    },
     address: {
         type: String,
         required: true
@@ -21,14 +17,20 @@ const buildingSchema = new Schema({
         enum: ['songdo', 'chungra'],
         default: 'songdo'
     },
-    bunyang: {
-        type: String,
-        enum: ['bunyangjung', 'imdaeganung', 'bunyangcomplete'],
-        default: 'bunyangjung'
-    },
     imageUrl: {
         type: String,
         required: true
+    },
+    information: {
+        floors: [
+            {
+                floorId: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'Floor',
+                    require: true
+                }
+            }
+        ]
     }
 });
 

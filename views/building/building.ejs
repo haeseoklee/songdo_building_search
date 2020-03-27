@@ -1,0 +1,18 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+<h1><%= building.name %></h1>
+
+<% floors.forEach(floor => { %>
+<div>
+    <a href="/building/<%= building._id %>/<%= floor._id %>">
+        <h2><%= floor.floorNumber %> 층</h2>
+        <img src="<%= floor.imageUrl %>" alt="">
+        <p><%= floor.bunyang %></p>
+    </a>
+    <hr>
+</div>
+<% }) %>
+
+
+<%- include('../includes/end.ejs') %>
