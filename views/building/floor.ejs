@@ -1,10 +1,21 @@
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/floor.css">
 </head>
 <body>
     <img src="<%= floor.imageUrl %>" alt="<%= floor.buildingName %> <%= floor.floorNumber %> 층">
-    <h2><%= floor.buildingName %> <%= floor.floorNumber %> 층</h2>
-    <h4><%= floor.bunyang %></h4>
-    <h4><%= floor.price %></h4>
-    <a href="">카카오톡 상담하기</a>
+    <div class="inform">
+        <h1><%= floor.buildingName %> <%= floor.floorNumber %> 층</h1>
+    </div>
+    <div class="bunyang inform">
+        <p style="background-color: <%= floor.bunyang !== "분양완료" ? "#3399FF" : "#FF4C4C" %>;"><%= floor.bunyang %></p>
+    </div>
+    <div>
+        <h4>분양가</h4>
+        <p><%= floor.price %></p>
+    </div>
+    <div>
+        <a href="">카카오톡 상담하기</a>
+        <p>전화 01022225555</p>
+    </div>
 
 <%- include('../includes/end.ejs') %>

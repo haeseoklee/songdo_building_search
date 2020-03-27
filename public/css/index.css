@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#songdo {
+    background-image: url(https://image.ajunews.com/content/image/2019/02/13/20190213132825284403.jpg); 
+}
+
+#chungra {
+    background-image: url(http://www.futurekorea.co.kr/news/photo/201803/104146_103047_3925.jpg); 
+}
+
+
+.img{
+    position: relative;                                                              
+    height: 40vh;
+    background-size: cover;
+}
+
+.img-cover{
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.6);                                                                 
+   z-index:1;
+}
+
+.img .content{
+     position: absolute;
+     top:50%;
+     left:50%;
+     transform: translate(-50%, -50%);                                                                   
+     font-size:2rem;
+     color: white;
+     z-index: 2;
+     text-align: center;
+}

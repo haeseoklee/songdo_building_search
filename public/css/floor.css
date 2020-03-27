@@ -1,0 +1,15 @@
+
+.bunyang {
+    width: fit-content;
+    color: white;
+    padding: 0.5em;
+}
+
+.bunyang p {
+    padding: 0.3em;
+    border-radius: 4px;
+}
+
+.inform{
+    display: inline-block;
+}
