@@ -3,6 +3,22 @@ body {
     padding: 0;
 }
 
+.footer {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+
+.company a {
+    text-decoration: none;
+    color: #4C4C4C
+}
+
+.company-inform {
+    font-size: 0.5em;
+    color: #666666;
+
+}
+
 #songdo {
     background-image: url(https://image.ajunews.com/content/image/2019/02/13/20190213132825284403.jpg); 
 }
