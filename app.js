@@ -9,6 +9,8 @@ const app = express();
 
 const buildingRoutes = require('./routes/building');
 const companyRoutes = require('./routes/company');
+const adminRoutes = require('./routes/admin');
+
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
@@ -18,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(buildingRoutes);
 app.use(companyRoutes);
-
+app.use(adminRoutes);
 app.use(errorController.get404);
 
 mongoose
