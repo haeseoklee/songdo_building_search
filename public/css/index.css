@@ -2,6 +2,9 @@ body {
     margin: 0;
     padding: 0;
 }
+h3 {
+    font-size: 5vw;
+}
 
 .footer {
     margin-left: 3em;
@@ -14,7 +17,7 @@ body {
 }
 
 .company-inform {
-    font-size: 0.5em;
+    font-size: 3vw;
     color: #666666;
 
 }
@@ -47,7 +50,7 @@ body {
      top:50%;
      left:50%;
      transform: translate(-50%, -50%);                                                                   
-     font-size:2rem;
+     font-size:8vw;
      color: white;
      z-index: 2;
      text-align: center;

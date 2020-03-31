@@ -20,12 +20,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(buildingRoutes);
 app.use(companyRoutes);
-app.use(adminRoutes);
+app.use('/admin', adminRoutes);
 app.use(errorController.get404);
 
 mongoose
     .connect(
-        'mongodb+srv://haeseok:5uG9X8t9AW2m1ZUX@cluster0-obm9s.mongodb.net/building_search?retryWrites=true&w=majority',
+        'mongodb+srv://haeseok:pvH4EQFtGK1baflp@cluster0-obm9s.mongodb.net',
+        { dbName: 'building_search', useNewUrlParser: true, useUnifiedTopology: true }
     )
     .then(() => {
         app.listen(3000);
