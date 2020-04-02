@@ -1,23 +1,24 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/create.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
 </head>
 <body>
     <h1>건물 정보 추가하기</h1>
-    <div>
+    <div class="form">
         <div class="form-control">
             <label for="title">건물 이름</label>
             <input type="text" name="title" id="title" placeholder="건물이름">
         </div>
         <div class="form-control">
             <label for="buildingImageUrl">건물 사진</label>
-            <input type="text" name="buildingImageUrl" id="buildingImageUrl" placeholder="건물사진 링크">
+            <input type="text" name="buildingImageUrl" id="buildingImageUrl" placeholder="이미지 링크">
         </div>
         <div class="form-control">
             <label for="address">건물 주소</label>
             <input type="text" name="address" id="address" step="0.01" placeholder="건물주소">
         </div>
         <div class="form-control">
-            <label for="city">송도 / 청라</label>
+            <label for="city">송도국제도시 / 청라국제도시</label>
             <select name="city" id="city">
                 <option value="songdo" selected="selected">송도국제도시</option>
                 <option value="chungra">청라국제도시</option>
@@ -40,12 +41,13 @@
             </select>
         </div>
 
-        <div class="form-control" id="floorDiv"></div>
-        <div class="form-control" id="floorRemoveBtn"><span id="floorRemoveSpan"> 0</span>층 삭제하기</div>
-        <div class="form-control" id="floorAddBtn"><span id="floorAddSpan"> 1 </span>층 추가하기</div>
+        <div class="form-btn" id="floorDiv"></div>
+        <div class="form-btn" id="floorRemoveBtn"><span id="floorRemoveSpan"> 0</span>층 삭제하기</div>
+        <div class="form-btn" id="floorAddBtn"><span id="floorAddSpan"> 1 </span>층 추가하기</div>
 
         <button class="btn" id="submitBtn">저장하기</button>
     </div>
+    <div class="loader loader-default"></div>
 
 <script src="/js/create.js"></script>
 <%- include('../includes/end.ejs') %>

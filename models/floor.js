@@ -17,7 +17,7 @@ const floorSchema = new Schema({
     },
     bunyang: {
         type: String,
-        enum: ['분양중', '임대가능', '분양완료'],
+        enum: ['분양중', '임대가능', '분양완료', '미분양'],
         default: '분양중'
     },
     imageUrl: {

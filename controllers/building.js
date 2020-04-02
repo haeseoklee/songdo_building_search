@@ -17,17 +17,25 @@ exports.getChungraBuildings = async (req, res, next) => {
 
 exports.getBuilding = async (req, res, next) => {
     const buildingId = req.params.buildingId;
-    const building = await Building.findById(buildingId);
-    const floorInfos = building.information.floors.map((floor) => {
-        const floorInfo = Floor.findById(floor.floorId);
-        return floorInfo;
-    })
-    const floors = await Promise.all(floorInfos);
-    res.render('building/building', {building: building, floors: floors});
+    try {
+        const building = await Building.findById(buildingId);
+        const floorInfos = building.information.floors.map((floor) => {
+            const floorInfo = Floor.findById(floor.floorId);
+            return floorInfo;
+        })
+        const floors = await Promise.all(floorInfos);
+        res.render('building/building', {building: building, floors: floors});
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.getFloor = async (req, res, next) => {
     const floorId = req.params.floorId;
-    const floor = await Floor.findById(floorId);
-    res.render('building/floor', {floor: floor});
+    try {
+        const floor = await Floor.findById(floorId);
+        res.render('building/floor', { floor: floor});
+    } catch (err) {
+        console.log(err);
+    }
 }

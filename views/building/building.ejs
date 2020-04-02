@@ -8,10 +8,18 @@
 <div class="img">
     <a href="/building/<%= building._id %>/<%= floor._id %>">
         <div class="content">
-            <h4><%= floor.floorNumber %> 층</h4>
+            <h4><%= floor.floorNumber < 0 ? `지하 ${-floor.floorNumber}` : floor.floorNumber %> 층</h4>
         </div>
+        <% let color = "#329932";
+        if (floor.bunyang === "분양완료"){
+            color = "#FF4C4C";
+        } else if (floor.bunyang === "미분양") {
+            color = "#FF4C4C";
+        } else if (floor.bunyang === "임대가능") {
+            color = "#3399FF";
+        }%>
         <div class="bunyang">
-            <p style="background-color: <%= floor.bunyang !== "분양완료" ? "#3399FF" : "#FF4C4C" %>;"><%= floor.bunyang %></p>
+            <p style="background-color: <%= color %>;"><%= floor.bunyang%></p>
         </div>
         <div class="img-cover" style="background-image: url(<%= floor.imageUrl %>)"></div>
     </a>

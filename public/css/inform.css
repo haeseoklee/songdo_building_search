@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+q{
+    font-weight: 200;
+}
+
+h1{
+    text-align: center;
+    font-size: 7vw;
+}
+h4{
+    text-align: center;
+    font-size: 5vw;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+hr{
+    border: solid 0.4px;
+    width: 35vw;
+    border-width: 0.5px;
+    margin: 6vw auto;
+    color: #CCCCCC;
+}
+
+.admin{
+    font-size: 2vw;
+    text-align: center;
+    color: #4C4C4C;
+}
+
+.company-history {
+    font-size: 3.5vw;
+    color: #666666;
+    text-align: center;
+}
+
+.company-intro {
+    font-size: 4vw;
+    color: #666666;
+    margin: 10vw 15vw;
+}
+
+span {
+    font-weight: 300;
+    font-size: 4vw;
+    color: #4C4C4C;
+}

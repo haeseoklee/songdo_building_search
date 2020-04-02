@@ -4,10 +4,20 @@
 <body>
     <img src="<%= floor.imageUrl %>" alt="<%= floor.buildingName %> <%= floor.floorNumber %> 층">
     <div class="inform">
-        <h1><%= floor.buildingName %> <%= floor.floorNumber %> 층</h1>
+        <h1><%= floor.buildingName %> <%= floor.floorNumber < 0 ? `지하 ${-floor.floorNumber}` : floor.floorNumber %> 층</h1>
     </div>
     <div class="bunyang inform">
-        <p style="background-color: <%= floor.bunyang !== "분양완료" ? "#3399FF" : "#FF4C4C" %>;"><%= floor.bunyang %></p>
+        <% let color = "#329932";
+        if (floor.bunyang === "분양완료"){
+            color = "#FF4C4C";
+        } else if (floor.bunyang === "미분양") {
+            color = "#FF4C4C";
+        } else if (floor.bunyang === "임대가능") {
+            color = "#3399FF";
+        }%>
+        <p style="background-color: <%= color %>;">
+            <%= floor.bunyang %>
+        </p>
     </div>
     <div>
         <h4>분양가</h4>

@@ -3,7 +3,7 @@ let floorNumber;
 
 window.onload = () => {
 
-    const sfloor = document.getElementById("sfloor");
+    const sfloor = document.getElementById('sfloor');
     const floorAddBtn = document.getElementById('floorAddBtn');
     const floorRemoveBtn = document.getElementById('floorRemoveBtn');
     const submitBtn = document.getElementById('submitBtn');
@@ -11,14 +11,14 @@ window.onload = () => {
     sfloorNumber = Number(sfloor.options[sfloor.selectedIndex].value) || 1;
     floorNumber = sfloorNumber || 1;
 
-    sfloor.addEventListener('change', sfloorHandler);
+    sfloor.addEventListener('change', sfloorOptionHandler);
     floorAddBtn.addEventListener('click', floorAddBtnHandler);
     floorRemoveBtn.addEventListener('click', floorRemoveBtnHandler);
     submitBtn.addEventListener('click', submitBtnHandler);
     refresh();
 }
 
-const sfloorHandler = () => {
+const sfloorOptionHandler = () => {
     const floorDiv = document.getElementById('floorDiv');
     floorDiv.innerHTML = '';
     sfloorNumber = Number(sfloor.options[sfloor.selectedIndex].value) || 1;
@@ -60,7 +60,7 @@ const floorAddBtnHandler = () => {
     const floorDiv = document.getElementById('floorDiv');
     
     floorDiv.innerHTML += `
-        <div class="form-control" style="border:solid;border-radius:5px;" id=${floorNumber}>
+        <div class="form-control floor" style="border:solid 0.5px #a1a1a1;border-radius:5px;padding:2vw 7vw" id=${floorNumber}>
             <div class="floor-control">
                 <h2>${rename(floorNumber)}층</h2>
 
@@ -70,6 +70,7 @@ const floorAddBtnHandler = () => {
                         <option value="분양중" selected="selected">분양중</option>
                         <option value="임대가능">임대가능</option>
                         <option value="분양완료">분양완료</option>
+                        <option value="미분양">미분양</option>
                     </select>
                 </div>
 
@@ -98,19 +99,51 @@ const floorRemoveBtnHandler = () => {
 }
 
 const submitBtnHandler = () => {
-    const data = {};
-    fetch('/admin/building', {
-        method: 'POST',
-        body: JSON.stringify(data), 
-        headers:{
-            'Content-Type': 'application/json'
+
+    const answer = confirm("저장하시겠습니까?");
+    if (!answer) {
+        return;
+    }
+    const city = document.getElementById('city');
+    const data = {
+        name: document.getElementById('title').value,
+        address: document.getElementById('address').value,
+        city: city.options[city.selectedIndex].value,
+        imageUrl: document.getElementById('buildingImageUrl').value,
+        information: Array.from(document.querySelectorAll('.floor')).map((floor)=>{
+            const floorId = floor.getAttribute('id');
+            const bunyang = document.getElementById(`${floorId}floor-bunyang`);
+            return {
+                floorNumber: floorId,
+                price: document.getElementById(`${floorId}floor-price`).value,
+                bunyang: bunyang.options[bunyang.selectedIndex].value,
+                imageUrl: document.getElementById(`${floorId}floor-imageUrl`).value
+            }
+        })
+    };
+
+    (async () => {
+        try {
+            document.querySelector('.loader').classList.add('is-active');
+            let response = await fetch('/admin/building', {
+                method: 'POST',
+                body: JSON.stringify(data), 
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            });
+            response = await response.json();
+            console.log(response);
+            if (response.result === 'success') {
+                window.location.href = `http://localhost:3000/${response.city}`;
+            } else {
+                alert("저장에 실패했습니다.!");
+            }
+            document.querySelector('.loader').classList.remove('is-active');
+        } catch (err) {
+            console.log(err);
+            alert("저장에 실패했습니다.!");
+            document.querySelector('.loader').classList.remove('is-active');
         }
-    })
-    .then((res) => res.json())
-    .then(() => {
-        
-    })
-    .catch(err => {
-        console.log(err);
-    })
+    })();
 }
