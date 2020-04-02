@@ -139,10 +139,10 @@ const submitBtnHandler = () => {
             } else {
                 alert("저장에 실패했습니다.!");
             }
-            document.querySelector('.loader').classList.remove('is-active');
         } catch (err) {
             console.log(err);
             alert("저장에 실패했습니다.!");
+        } finally {
             document.querySelector('.loader').classList.remove('is-active');
         }
     })();

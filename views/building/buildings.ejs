@@ -1,12 +1,13 @@
 <%- include('../includes/head.ejs') %>
 <link rel="stylesheet" href="/css/buildings.css">
+
 </head>
 <body>
     <% if (!buildings.length) { %>
         <h1>현재 분양중인 건물이 없습니다</h1>
     <% } else { %>
         <% buildings.forEach(building => { %>
-            <div class="img">
+            <div class="img building">
                 <a href="/building/<%= building._id %>">
                     <div class="content">
                         <h4><%= building.name %></h4>
@@ -16,5 +17,7 @@
             </div>
         <% }) %>
     <% } %>
+    <div class="loader loader-default"></div>
+    <script src="/js/buildings.js"></script>
     
 <%- include('../includes/end.ejs') %>
