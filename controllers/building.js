@@ -6,13 +6,21 @@ exports.getIndex = (req, res, next) => {
 }
 
 exports.getSongdoBuildings = async (req, res, next) => {
-    const buildings = await Building.find({'city': 'songdo'});
-    res.render('building/buildings', {buildings: buildings});
+    try {
+        const buildings = await Building.find({'city': 'songdo'});
+        res.render('building/buildings', {buildings: buildings});
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.getChungraBuildings = async (req, res, next) => {
-    const buildings = await Building.find({'city': 'chungra'});
-    res.render('building/buildings', {buildings: buildings});
+    try {
+        const buildings = await Building.find({'city': 'chungra'});
+        res.render('building/buildings', {buildings: buildings});
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.getBuilding = async (req, res, next) => {
