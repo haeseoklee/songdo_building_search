@@ -2,9 +2,18 @@
 <link rel="stylesheet" href="/css/floor.css">
 </head>
 <body>
-    <img src="<%= floor.imageUrl %>" alt="<%= floor.buildingName %> <%= floor.floorNumber %> 층">
+    <div class="thumbnail-wrapper"> 
+        <div class="thumbnail"> 
+            <div class="centered">
+                <a href="<%= building.imageUrl %>">
+                    <img src="<%= building.imageUrl %>" alt="<%= building.buildingName %>"> 
+                </a>
+            </div> 
+        </div> 
+    </div>
+
     <div class="inform">
-        <h1><%= floor.buildingName %> <%= floor.floorNumber < 0 ? `지하 ${-floor.floorNumber}` : floor.floorNumber %> 층</h1>
+        <span class="title"><%= floor.buildingName %></span> <span class="floor"><%= floor.floorNumber < 0 ? `지하 ${-floor.floorNumber}` : floor.floorNumber %> 층</span>
     </div>
     <div class="bunyang inform">
         <% let color = "#329932";
@@ -19,13 +28,42 @@
             <%= floor.bunyang %>
         </p>
     </div>
-    <div>
-        <h4>분양가</h4>
-        <p><%= floor.price %></p>
+    <div class="block"></div>
+    <div class="inform">
+        <div class="bungyang-detail">
+            <span class="inform-title">분양가</span>
+            <p><%= floor.price %></p>
+        </div>
+        <div class="bungyang-detail">
+            <span class="inform-title">정보1</span>
+            <p>????</p>
+        </div>
+        <div class="bungyang-detail" style="border: none;">
+            <span class="inform-title">정보2</span>
+            <p>????</p>
+        </div>
     </div>
-    <div>
-        <a href="">카카오톡 상담하기</a>
-        <p>전화 01022225555</p>
+
+    <div class="thumbnail-wrapper"> 
+        <div class="thumbnail"> 
+            <div class="centered"> 
+                <a href="<%= floor.imageUrl %>">
+                    <img src="<%= floor.imageUrl %>" alt="<%= floor.buildingName %> <%= floor.floorNumber %> 층"> 
+                </a>
+            </div> 
+        </div> 
     </div>
+
+    <span class="inform-title">위치</span>
+    <div id="map"></div>
+    
+    <div class="btn" id="phone"><a href="tel:01012341234">전화로 문의하기</a></div>
+    <div class="btn" id="kakao">카카오톡으로 문의하기</div>
+
+    <script src="/js/floor.js"></script>
+    <script>
+        const buildingAddress = `<%= building.address %>`;
+    </script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b42b5691e4c59952b4855dff3eab6064&libraries=services,clusterer,drawing"></script>
 
 <%- include('../includes/end.ejs') %>

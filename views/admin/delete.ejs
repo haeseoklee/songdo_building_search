@@ -1,0 +1,26 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/buildings.css">
+<link rel="stylesheet" href="/css/delete.css">
+
+</head>
+<body>
+    <h1>건물 정보 삭제하기</h1>
+    <% if (!buildings.length) { %>
+        <h1>현재 분양중인 건물이 없습니다</h1>
+    <% } else { %>
+        <% buildings.forEach(building => { %>
+            <div class="img building" id="building-<%= building._id %>">
+                <a href="/building/<%= building._id %>">
+                    <div class="content">
+                        <h4><%= building.name %></h4>
+                    </div>
+                    <div class="img-cover" style="background-image: url(<%= building.imageUrl %>)"></div>
+                </a>
+                <div class="deleteBtn" id="<%= building._id %>">삭제</div>
+            </div>
+        <% }) %>
+    <% } %>
+    <div class="loader loader-default"></div>
+    <script src="/js/delete.js"></script>
+    
+<%- include('../includes/end.ejs') %>

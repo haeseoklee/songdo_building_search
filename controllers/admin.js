@@ -1,19 +1,21 @@
 const Building = require('../models/building');
+const Floor = require('../models/floor');
 
 exports.getAdminPage = (req, res, next) => {
     res.render('admin/admin', {});
-}
-
-exports.getAdminSearchPage = (req, res, next) => {
-    res.render('admin/search', {});
 }
 
 exports.getAdminCreatePage = (req, res, next) => {
     res.render('admin/create', {});
 }
 
-exports.getAdminDeletePage = (req, res, next) => {
-    res.render('admin/delete', {});
+exports.getAdminDeletePage = async (req, res, next) => {
+    try {
+        const buildings = await Building.find();
+        res.render('admin/delete', {buildings: buildings});
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 exports.getAdminUpdatePage = (req, res, next) => {
@@ -52,8 +54,26 @@ exports.postAdminBuilding = async (req, res, next) => {
     }
 }
 
-exports.deleteAdminBuilding = (req, res, next) => {
-    res.status(200);
+exports.deleteAdminBuilding = async (req, res, next) => {
+
+    const buildingId = req.body.buildingId;
+    if (!buildingId)
+        throw new Error("올바른 빌딩이 아닙니다.");
+    try {
+        await Building.findByIdAndRemove(buildingId);
+        await Floor.deleteMany({
+            buildingId: buildingId
+        })
+        res.status(200).json({
+            result: 'success' 
+        })
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            result: 'fail' 
+        })
+    }
+    
 }
 
 exports.putAdminBuilding = (req, res, next) => {

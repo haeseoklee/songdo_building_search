@@ -39,10 +39,12 @@ exports.getBuilding = async (req, res, next) => {
 }
 
 exports.getFloor = async (req, res, next) => {
+    const buildingId = req.params.buildingId;
     const floorId = req.params.floorId;
     try {
+        const building = await Building.findById(buildingId);
         const floor = await Floor.findById(floorId);
-        res.render('building/floor', { floor: floor});
+        res.render('building/floor', {building: building, floor: floor});
     } catch (err) {
         console.log(err);
     }

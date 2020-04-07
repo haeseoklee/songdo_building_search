@@ -1,0 +1,17 @@
+h1{
+    text-align: center;
+    font-size: 7vw;
+}
+
+.deleteBtn {
+    font-size: 4.3vw;
+    position: absolute;
+    color: white;
+    z-index: 3;
+    padding: 0.5em;
+    border:solid 1px #FF4C4C;
+    background-color: #FF4C4C;
+    border-radius: 0.5em;
+    top:35%;
+    left:80%;
+}

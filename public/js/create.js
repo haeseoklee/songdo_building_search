@@ -123,8 +123,8 @@ const submitBtnHandler = () => {
     };
 
     (async () => {
+        document.querySelector('.loader').classList.add('is-active');
         try {
-            document.querySelector('.loader').classList.add('is-active');
             let response = await fetch('/admin/building', {
                 method: 'POST',
                 body: JSON.stringify(data), 
@@ -133,7 +133,6 @@ const submitBtnHandler = () => {
                 }
             });
             response = await response.json();
-            console.log(response);
             if (response.result === 'success') {
                 window.location.href = `http://localhost:3000/${response.city}`;
             } else {
@@ -142,8 +141,7 @@ const submitBtnHandler = () => {
         } catch (err) {
             console.log(err);
             alert("저장에 실패했습니다.!");
-        } finally {
-            document.querySelector('.loader').classList.remove('is-active');
         }
+        document.querySelector('.loader').classList.remove('is-active');
     })();
 }

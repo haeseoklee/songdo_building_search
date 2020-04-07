@@ -57,11 +57,7 @@ buildingSchema.methods.addFloors = async function(building, floors) {
     });
     try {
         const results =  await Promise.all(newFloors);
-        this.information.floors = results.map(floor => {
-            return {
-                floorId: floor._id
-            };
-        })
+        this.information.floors = results.map(floor => {floorId: floor._id});
         return this.save();
     } catch (err) {
         console.log(err);

@@ -1,3 +1,14 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    width: auto;
+    height: 40vh;
+    margin-bottom: 10vw;
+}
+
 
 .bunyang {
     width: fit-content;
@@ -8,8 +19,110 @@
 .bunyang p {
     padding: 0.3em;
     border-radius: 4px;
+    font-size: 5vw;
+    font-weight: 600;
 }
 
 .inform{
     display: inline-block;
 }
+
+.block {
+    display: block;
+}
+.bungyang-detail{
+    padding-top: 0vw;
+    padding-right: 7vw;
+    padding-left: 7vw;
+    display: inline-block;
+    border-right: 0.5px solid #a1a1a1;
+    height: 17vw;
+    max-width: 20vw;
+}
+
+.floor {
+    font-size: 9vw;
+    font-weight: 600;
+}
+
+p{
+    margin-top: 3vw;
+    font-size: 6.5vw;
+    font-weight: 500;
+    text-align: center;
+}
+
+.inform-title {
+    font-size: 5.5vw;
+    font-weight: 300;
+}
+
+.title {
+    margin: 3vw;
+    font-size: 9.5vw;
+    font-weight: 300;
+}
+
+.btn{
+    padding: 3px;
+    border: solid;
+    border-radius: 3px;
+    border-width: 0.8px;
+    color: white;
+    text-align: center;
+    font-size: 6vw;
+    font-weight: 600;
+    margin: 3vw;
+    padding: 2vw 0vw;
+}
+
+#phone {
+    border-color: #329932;
+    background-color: #329932;
+    
+}
+
+#kakao {
+    border-color: #ffee00;
+    background-color: #ffee00;
+    color: black;
+}
+
+
+a, a.unvisited, a.unvisited:visited, a.unvisited:active{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.thumbnail-wrappper { width: 25%; } 
+.thumbnail { 
+    position: relative; 
+    padding-top:  100%;
+    /* 1:1 ratio */ 
+    overflow: hidden; 
+} 
+.thumbnail .centered { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    -webkit-transform: translate(50%,50%);
+    -ms-transform: translate(50%,50%); 
+    transform: translate(50%,50%); 
+} 
+.thumbnail .centered img { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    max-width: 100%; 
+    height: auto; 
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%); 
+    transform: translate(-50%,-50%); 
+}
+
+img.portrait { width: 100%; height: auto; }
+img.landscape { width: auto; height: 100%; }
+
