@@ -12,6 +12,13 @@ const drawMap = (result) => {
     };
 
     const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+    const marker = new kakao.maps.Marker({ 
+        // 지도 중심좌표에 마커를 생성합니다 
+        position: map.getCenter() 
+    }); 
+
+    marker.setMap(map);
 }
 
 const getBuildingInfo = (func) => {
